@@ -1,0 +1,11 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: katana_db
+    env_file: .env
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_HOST: ${DB_HOST:-localhost}
+    volumes:
+      - /var/lib/postgresql/data
