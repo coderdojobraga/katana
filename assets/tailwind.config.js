@@ -9,7 +9,9 @@ module.exports = {
   content: [
     "./js/**/*.js",
     "../lib/katana_web.ex",
-    "../lib/katana_web/**/*.*ex"
+    "../lib/katana_web/**/*.*ex",
+    "./vue/**/*.vue",
+    "../lib/**/*.vue"
   ],
   theme: {
     extend: {

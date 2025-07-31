@@ -8,15 +8,12 @@ defmodule Katana.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      {NodeJS.Supervisor, [path: LiveVue.SSR.NodeJS.server_path(), pool_size: 4]},
       KatanaWeb.Telemetry,
       Katana.Repo,
       {DNSCluster, query: Application.get_env(:katana, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Katana.PubSub},
-      # Start the Finch HTTP client for sending emails
       {Finch, name: Katana.Finch},
-      # Start a worker by calling: Katana.Worker.start_link(arg)
-      # {Katana.Worker, arg},
-      # Start to serve requests, typically the last entry
       KatanaWeb.Endpoint
     ]
 

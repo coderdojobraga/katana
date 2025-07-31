@@ -36,6 +36,7 @@ defmodule Katana.MixProject do
   defp deps do
     [
       # core
+      {:live_vue, "~> 0.6"},
       {:bandit, "~> 1.5"},
       {:phoenix, "~> 1.7.21"},
       {:phoenix_live_view, "~> 1.0"},
@@ -49,7 +50,6 @@ defmodule Katana.MixProject do
       {:postgrex, ">= 0.0.0"},
 
       # frontend
-      {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},
       {:heroicons,
        github: "tailwindlabs/heroicons",
        tag: "v2.1.1",
@@ -75,7 +75,6 @@ defmodule Katana.MixProject do
 
       # dev
       {:igniter, "~> 0.6", only: [:dev, :test]},
-      {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:phoenix_live_reload, "~> 1.2", only: :dev}
     ]
   end
@@ -92,11 +91,14 @@ defmodule Katana.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind katana", "esbuild katana"],
+      "assets.setup": ["cmd --cd assets npm install"],
+      "assets.build": [
+        "cmd --cd assets npm run build",
+        "cmd --cd assets npm run build-server"
+      ],
       "assets.deploy": [
-        "tailwind katana --minify",
-        "esbuild katana --minify",
+        "cmd --cd assets npm run build",
+        "cmd --cd assets npm run build-server",
         "phx.digest"
       ]
     ]

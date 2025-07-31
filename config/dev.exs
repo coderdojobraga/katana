@@ -24,11 +24,12 @@ config :katana, KatanaWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "Yz7S7zILG5VpjihK8U0LZIcD0wqwDApDxbVm2/rRIevSMEnF/1HLOjeon/WjGMMh",
-  watchers: [
-    esbuild: {Esbuild, :install_and_run, [:katana, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:katana, ~w(--watch)]}
-  ]
+  secret_key_base: "Yz7S7zILG5VpjihK8U0LZIcD0wqwDApDxbVm2/rRIevSMEnF/1HLOjeon/WjGMMh"
+
+config :live_vue,
+  vite_host: "http://localhost:5173",
+  ssr_module: LiveVue.SSR.ViteJS,
+  ssr: true
 
 # ## SSL Support
 #
@@ -61,6 +62,9 @@ config :katana, KatanaWeb.Endpoint,
       ~r"priv/gettext/.*(po)$",
       ~r"lib/katana_web/(controllers|live|components)/.*(ex|heex)$"
     ]
+  ],
+  watchers: [
+    npm: ["--silent", "run", "dev", cd: Path.expand("../assets", __DIR__)]
   ]
 
 # Enable dev routes for dashboard and mailbox

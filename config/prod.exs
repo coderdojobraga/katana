@@ -7,6 +7,10 @@ import Config
 # before starting your production server.
 config :katana, KatanaWeb.Endpoint, cache_static_manifest: "priv/static/cache_manifest.json"
 
+config :live_vue,
+  ssr_module: LiveVue.SSR.ViteJS,
+  ssr: true
+
 # Configures Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: Katana.Finch
 
