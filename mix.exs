@@ -50,10 +50,10 @@ defmodule Katana.MixProject do
       {:postgrex, ">= 0.0.0"},
 
       # frontend
-      {:heroicons,
-       github: "tailwindlabs/heroicons",
-       tag: "v2.1.1",
-       sparse: "optimized",
+      {:lucide,
+       github: "lucide-icons/lucide",
+       tag: "0.536.0",
+       sparse: "icons",
        app: false,
        compile: false,
        depth: 1},
