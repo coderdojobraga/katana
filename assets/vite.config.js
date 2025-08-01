@@ -1,6 +1,8 @@
 import path from "path"
 import { defineConfig } from "vite"
 
+import tailwindcss from '@tailwindcss/vite'
+
 import vue from "@vitejs/plugin-vue"
 import liveVuePlugin from "live_vue/vitePlugin"
 
@@ -11,7 +13,7 @@ export default defineConfig(({ command }) => {
   return {
     base: isDev ? undefined : "/assets",
     publicDir: "static",
-    plugins: [vue(), liveVuePlugin()],
+    plugins: [tailwindcss(), vue(), liveVuePlugin()],
     worker: {
       format: "es",
     },
