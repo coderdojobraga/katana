@@ -1,6 +1,6 @@
 <template>
   <SidebarProvider :default-open="true">
-    <UserSidebar />
+    <AppSidebar />
     <SidebarInset>
       <header class="flex h-16 shrink-0 items-center gap-2 border-b px-4">
         <SidebarTrigger class="-ml-1" />
@@ -24,7 +24,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 
-import UserSidebar from "@/components/core/UserSidebar.vue";
+import AppSidebar from "@/components/core/AppSidebar.vue";
 
 interface Props {
   pageTitle?: string;
