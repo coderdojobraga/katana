@@ -1,20 +1,23 @@
 <script setup lang="ts">
-  import {ref} from "vue"
-  const props = defineProps<{count: number}>()
-  const emit = defineEmits<{inc: [{value: number}]}>()
-  const diff = ref<string>("1")
+import { ref } from "vue";
+import { Button } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
+
+const props = defineProps<{ count: number }>();
+const emit = defineEmits<{ inc: [{ value: number }] }>();
+const diff = ref<number[]>([1]);
 </script>
 
 <template>
   Current count
   <div class="text-2xl text-bold">{{ props.count }}</div>
   <label class="block mt-8">Diff: </label>
-  <input v-model="diff" class="mt-4" type="range" min="1" max="10">
+  <Slider v-model="diff" class="mt-4" :min="1" :max="10" />
 
-  <button 
-    @click="emit('inc', {value: parseInt(diff)})"
-    class="mt-4 bg-black text-white rounded p-2 block"
+  <Button
+    @click="emit('inc', { value: diff[0] })"
+    class="mt-4 p-2 block"
   >
-    Increase counter by {{ diff }}
-  </button> 
+    Increase counter by {{ diff[0] }}
+  </Button>
 </template>

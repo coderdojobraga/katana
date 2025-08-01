@@ -17,11 +17,18 @@
     "vue-tsc": "^2.0.13"
   },
   "dependencies": {
+    "@vueuse/core": "^13.6.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "live_vue": "file:../deps/live_vue",
+    "lucide-vue-next": "^0.536.0",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
     "phoenix_live_view": "file:../deps/phoenix_live_view",
+    "reka-ui": "^2.4.1",
+    "tailwind-merge": "^3.3.1",
     "topbar": "^2.0.2",
+    "tw-animate-css": "^1.3.6",
     "vue": "^3.5.18"
   }
 }
