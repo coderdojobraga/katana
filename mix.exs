@@ -49,6 +49,9 @@ defmodule Katana.MixProject do
       {:ecto_sql, "~> 3.10"},
       {:postgrex, ">= 0.0.0"},
 
+      # auth
+      {:argon2_elixir, "~> 3.0"},
+
       # frontend
       {:lucide,
        github: "lucide-icons/lucide",

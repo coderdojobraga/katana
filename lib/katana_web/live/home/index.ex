@@ -1,4 +1,4 @@
-defmodule KatanaWeb.HomeLive.Index do
+defmodule KatanaWeb.HomeLive do
   @moduledoc false
 
   use KatanaWeb, :live_view

@@ -1,6 +1,8 @@
 defmodule KatanaWeb.Router do
   use KatanaWeb, :router
 
+  import KatanaWeb.UserAuth
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -8,6 +10,7 @@ defmodule KatanaWeb.Router do
     plug :put_root_layout, html: {KatanaWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_current_user
   end
 
   pipeline :api do
@@ -17,8 +20,7 @@ defmodule KatanaWeb.Router do
   scope "/", KatanaWeb do
     pipe_through :browser
 
-    live "/", HomeLive.Index
-    live "/settings", HomeLive.Index
+    live "/", HomeLive, :index
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
@@ -35,6 +37,41 @@ defmodule KatanaWeb.Router do
 
       live_dashboard "/dashboard", metrics: KatanaWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
+    end
+  end
+
+  ## Authentication routes
+
+  scope "/", KatanaWeb do
+    pipe_through [:browser, :redirect_if_user_is_authenticated]
+
+    live_session :redirect_if_user_is_authenticated, on_mount: [{KatanaWeb.UserAuth, :redirect_if_user_is_authenticated}] do
+      live "/users/register", UserRegistrationLive, :new
+      live "/users/login", UserLoginLive, :new
+      live "/users/reset_password", UserForgotPasswordLive, :new
+      live "/users/reset_password/:token", UserResetPasswordLive, :edit
+    end
+
+    post "/users/login", UserSessionController, :create
+  end
+
+  scope "/", KatanaWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    live_session :require_authenticated_user, on_mount: [{KatanaWeb.UserAuth, :ensure_authenticated}] do
+      live "/users/settings", UserSettingsLive, :edit
+      live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
+    end
+  end
+
+  scope "/", KatanaWeb do
+    pipe_through [:browser]
+
+    delete "/users/log_out", UserSessionController, :delete
+
+    live_session :current_user, on_mount: [{KatanaWeb.UserAuth, :mount_current_user}] do
+      live "/users/confirm/:token", UserConfirmationLive, :edit
+      live "/users/confirm", UserConfirmationInstructionsLive, :new
     end
   end
 end

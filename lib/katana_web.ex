@@ -49,10 +49,19 @@ defmodule KatanaWeb do
     end
   end
 
+  def live_view(layout) do
+    layout_opts = if layout, do: [layout: {KatanaWeb.Layouts, layout}], else: []
+
+    quote do
+      use Phoenix.LiveView, unquote(layout_opts)
+
+      unquote(html_helpers())
+    end
+  end
+
   def live_view do
     quote do
-      use Phoenix.LiveView,
-        layout: {KatanaWeb.Layouts, :app}
+      use Phoenix.LiveView, layout: {KatanaWeb.Layouts, :app}
 
       unquote(html_helpers())
     end
@@ -146,5 +155,9 @@ defmodule KatanaWeb do
   """
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])
+  end
+
+  defmacro __using__({which, layout}) when is_atom(which) do
+    apply(__MODULE__, which, [layout])
   end
 end

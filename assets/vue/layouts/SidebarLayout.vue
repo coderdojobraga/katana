@@ -1,3 +1,19 @@
+<script setup lang="ts">
+import { Separator } from "@/components/ui/separator";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import AppSidebar from "@/components/core/AppSidebar.vue";
+
+interface Props {
+  pageTitle?: string;
+}
+
+defineProps<Props>();
+</script>
+
 <template>
   <SidebarProvider :default-open="true">
     <AppSidebar />
@@ -15,20 +31,3 @@
     </SidebarInset>
   </SidebarProvider>
 </template>
-
-<script setup lang="ts">
-import { Separator } from "@/components/ui/separator";
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar";
-
-import AppSidebar from "@/components/core/AppSidebar.vue";
-
-interface Props {
-  pageTitle?: string;
-}
-
-defineProps<Props>();
-</script>

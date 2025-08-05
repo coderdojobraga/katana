@@ -20,7 +20,7 @@ const data = {
   user: {
     name: "Rui Lopes",
     email: "mail@ruilopesm.com",
-    avatar: "/images/ruilopes.jpg",
+    avatar: "",
   },
   navMain: [
     {
