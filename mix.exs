@@ -36,7 +36,7 @@ defmodule Katana.MixProject do
   defp deps do
     [
       # core
-      {:live_vue, "~> 0.6"},
+      {:live_vue, "~> 0.7.1"},
       {:bandit, "~> 1.5"},
       {:phoenix, "~> 1.7.21"},
       {:phoenix_live_view, "~> 1.0"},
