@@ -16,7 +16,7 @@ config :katana, KatanaWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: KatanaWeb.ErrorHTML, json: KatanaWeb.ErrorJSON],
+    formats: [html: KatanaWeb.ErrorHTML],
     layout: false
   ],
   pubsub_server: Katana.PubSub,

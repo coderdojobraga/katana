@@ -38,7 +38,7 @@ defmodule KatanaWeb do
   def controller do
     quote do
       use Phoenix.Controller,
-        formats: [:html, :json],
+        formats: [:html],
         layouts: [html: KatanaWeb.Layouts]
 
       use Gettext, backend: KatanaWeb.Gettext

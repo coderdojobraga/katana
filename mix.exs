@@ -36,7 +36,7 @@ defmodule Katana.MixProject do
   defp deps do
     [
       # core
-      {:live_vue, "~> 0.7.1"},
+      {:live_vue, git: "https://github.com/Valian/live_vue.git", branch: "useLiveForm"},
       {:bandit, "~> 1.5"},
       {:phoenix, "~> 1.7.21"},
       {:phoenix_live_view, "~> 1.0"},
