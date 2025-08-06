@@ -1,14 +1,14 @@
-import path from "path"
-import { defineConfig } from "vite"
+import path from "path";
+import { defineConfig } from "vite";
 
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from "@tailwindcss/vite";
 
-import vue from "@vitejs/plugin-vue"
-import liveVuePlugin from "live_vue/vitePlugin"
+import vue from "@vitejs/plugin-vue";
+import liveVuePlugin from "live_vue/vitePlugin";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
-  const isDev = command !== "build"
+  const isDev = command !== "build";
 
   return {
     base: isDev ? undefined : "/assets",
@@ -54,5 +54,5 @@ export default defineConfig(({ command }) => {
         },
       },
     },
-  }
-})
+  };
+});

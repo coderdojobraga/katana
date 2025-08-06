@@ -43,6 +43,6 @@ module.exports = plugin(function ({ matchComponents, theme }) {
         return svgStyle({ prefix: "lucide", name, content, size });
       },
     },
-    { values }
+    { values },
   );
 });

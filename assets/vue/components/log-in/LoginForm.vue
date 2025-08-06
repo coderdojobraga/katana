@@ -1,21 +1,19 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from "vue"
-import { cn } from "@/lib/utils"
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import type { HTMLAttributes } from "vue";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const props = defineProps<{
-  class?: HTMLAttributes["class"]
-}>()
+  class?: HTMLAttributes["class"];
+}>();
 </script>
 
 <template>
   <form :class="cn('flex flex-col gap-6', props.class)">
     <div class="flex flex-col items-center gap-2 text-center">
-      <h1 class="text-2xl font-bold">
-        Log in to your account
-      </h1>
+      <h1 class="text-2xl font-bold">Log in to your account</h1>
       <p class="text-muted-foreground text-sm text-balance">
         Enter your email below to log in to your account
       </p>
@@ -37,10 +35,10 @@ const props = defineProps<{
         </div>
         <Input id="password" type="password" required />
       </div>
-      <Button type="submit" class-name="w-full">
-        Log in
-      </Button>
-      <div class="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
+      <Button type="submit" class-name="w-full"> Log in </Button>
+      <div
+        class="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t"
+      >
         <span class="bg-background text-muted-foreground relative z-10 px-2">
           Or continue with
         </span>
@@ -57,9 +55,7 @@ const props = defineProps<{
     </div>
     <div class="text-center text-sm">
       Don't have an account?
-      <a href="#" class="underline underline-offset-4">
-        Sign up
-      </a>
+      <a href="#" class="underline underline-offset-4"> Sign up </a>
     </div>
   </form>
 </template>

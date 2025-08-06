@@ -25,9 +25,10 @@ const URL = import.meta.env.VITE_PHOENIX_URL;
       </div>
     </div>
     <div class="relative hidden bg-muted lg:block">
-      <img 
+      <img
         :src="`${URL}/images/placeholder.svg`"
-        class="absolute inset-0 h-full w-full object-cover" />
+        class="absolute inset-0 h-full w-full object-cover"
+      />
     </div>
   </div>
 </template>

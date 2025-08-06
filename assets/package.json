@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite --host -l warn",
     "lint": "vue-tsc --noEmit",
+    "format": "npx prettier --write .",
     "build": "vite build",
     "build-server": "vite build --ssr js/server.js --out-dir ../priv/vue --minify esbuild --ssrManifest && echo '{\"type\": \"module\" } ' > ../priv/vue/package.json"
   },
@@ -11,6 +12,7 @@
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/vite": "^4.1.11",
     "@vitejs/plugin-vue": "^5.0.4",
+    "prettier": "3.6.2",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.4.5",
     "vite": "^5.4.19",
