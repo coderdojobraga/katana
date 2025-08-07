@@ -43,7 +43,8 @@ defmodule KatanaWeb.Router do
   scope "/", KatanaWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 
-    live_session :redirect_if_user_is_authenticated, on_mount: [{KatanaWeb.UserAuth, :redirect_if_user_is_authenticated}] do
+    live_session :redirect_if_user_is_authenticated,
+      on_mount: [{KatanaWeb.UserAuth, :redirect_if_user_is_authenticated}] do
       live "/users/register", UserRegistrationLive, :new
       live "/users/log_in", UserLoginLive, :new
       live "/users/reset_password", UserForgotPasswordLive, :new
@@ -56,7 +57,8 @@ defmodule KatanaWeb.Router do
   scope "/", KatanaWeb do
     pipe_through [:browser, :require_authenticated_user]
 
-    live_session :require_authenticated_user, on_mount: [{KatanaWeb.UserAuth, :ensure_authenticated}] do
+    live_session :require_authenticated_user,
+      on_mount: [{KatanaWeb.UserAuth, :ensure_authenticated}] do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
     end

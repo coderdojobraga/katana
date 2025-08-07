@@ -94,6 +94,7 @@ defmodule Katana.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      "format.all": ["format", "cmd --cd assets npm run format"],
       "assets.setup": ["cmd --cd assets npm install"],
       "assets.build": [
         "cmd --cd assets npm run build",

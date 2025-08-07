@@ -1,7 +1,9 @@
 defmodule Katana.Accounts.UserToken do
   use Ecto.Schema
+
   import Ecto.Query
-  alias Katana.Accounts.UserToken
+
+  alias Katana.Accounts.{User, UserToken}
 
   @hash_algorithm :sha256
   @rand_size 32
@@ -20,7 +22,8 @@ defmodule Katana.Accounts.UserToken do
     field :token, :binary
     field :context, :string
     field :sent_to, :string
-    belongs_to :user, Katana.Accounts.User
+
+    belongs_to :user, User
 
     timestamps(type: :utc_datetime, updated_at: false)
   end

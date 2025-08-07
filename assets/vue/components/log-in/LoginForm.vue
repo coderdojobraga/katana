@@ -3,7 +3,7 @@ import { Ref, ref } from "vue";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useLiveVue } from "live_vue";
+import { Link, useLiveVue } from "live_vue";
 
 const live = useLiveVue();
 
@@ -24,7 +24,7 @@ const submit = () => {
     },
     (_reply: any, _ref: Ref) => {
       isSubmitting.value = false;
-    }
+    },
   );
 };
 </script>
@@ -34,7 +34,7 @@ const submit = () => {
     <div class="flex flex-col items-center gap-2 text-center">
       <h1 class="text-2xl font-bold">Log in to your account</h1>
       <p class="text-muted-foreground text-sm">
-        Enter your credentials below to log into your account
+        Enter your credentials below to log in to your account
       </p>
     </div>
     <div class="grid gap-6">
@@ -87,7 +87,9 @@ const submit = () => {
     </div>
     <div class="text-center text-sm">
       Don't have an account?
-      <a href="#" class="underline underline-offset-4"> Sign up </a>
+      <Link navigate="/users/register" class="underline underline-offset-4">
+        Register here
+      </Link>
     </div>
   </form>
 </template>
