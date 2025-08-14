@@ -51,12 +51,12 @@ const submit = () => {
       <div class="grid gap-3">
         <div class="flex items-center">
           <Label for="password">Password</Label>
-          <a
-            href="#"
+          <Link
+            navigate="/users/forgot_password"
             class="ml-auto text-sm underline-offset-4 hover:underline"
           >
             Forgot your password?
-          </a>
+          </Link>
         </div>
         <Input id="password" type="password" v-model="form.password" required />
       </div>

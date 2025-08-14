@@ -39,7 +39,7 @@ const password = fields["password"];
     </div>
     <div class="grid gap-6">
       <div class="grid gap-3">
-        <Label for="name" mandatory> Name </Label>
+        <Label for="name" mandatory>Name</Label>
         <Input
           id="name"
           type="text"
