@@ -44,6 +44,14 @@ Then you should change the `.env` file as needed. You might have to run this scr
 
 Check the [mix.exs](mix.exs) file `aliases` section for more commands.
 
+If you use Visual Studio Code, you can install these extensions to improve your development experience:
+
+- [ElixirLS](https://marketplace.visualstudio.com/items?itemName=JakeBecker.elixir-ls)
+- [Phoenix Framework](https://marketplace.visualstudio.com/items?itemName=phoenixframework.phoenix)
+- [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+
+Please note that effort is being made to create a new extension for LiveVue. You can follow the progress [here](https://github.com/Valian/live-vue-sigil-highlighting).
+
 ## 🐳 Docker
 
 If you want to setup the required database using docker containers you can
