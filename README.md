@@ -8,7 +8,7 @@
 
 ## 📖 Considerations
 
-This project is a work in progress that is being heavily inspired by our older project [bokken](https://coderdojobraga/bokken.git). It is being developed in Elixir and Phoenix LiveView, with the particularity of using Vue.js (via [LiveVue](https://hexdocs.pm/live_vue)) for the frontend.
+This project is a work in progress that is being heavily inspired by our older project [bokken](https://github.com/coderdojobraga/bokken). It is being developed in Elixir and Phoenix LiveView, with the particularity of using Vue.js (via [LiveVue](https://hexdocs.pm/live_vue)) for the frontend.
 
 ## 🤝 Contributing
 
