@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+BASE_DIR=$(dirname "${BASH_SOURCE[0]:-$0}")
+cd "${BASE_DIR}/.." || exit 127
+
+# shellcheck source=../scripts/helpers.sh
+. scripts/helpers.sh
+# shellcheck source=../scripts/logging.sh
+. scripts/logging.sh
+# shellcheck source=../scripts/utils.sh
+. scripts/utils.sh
+
+PROGRAM=$(basename "${BASH_SOURCE[0]:-$0}")
+VERSION=0.5.5
+
+function display_help() {
+cat <<EOF
+  $(help_title_section Usage)
+    ${PROGRAM} [options] <environment>
+
+  $(help_title_section Options)
+    -h --help         Show this screen.
+    -v --version      Show version.
+EOF
+}
+
+OS=$(uname | tr '[:upper:]' '[:lower:]')
+
+while [ ! $# -eq 0 ]; do
+  case "$1" in
+    -h | --help)
+      display_help
+      exit 0
+      ;;
+    -v | --version)
+      display_version "${VERSION}" "${PROGRAM}"
+      exit 0
+      ;;
+    *)
+      display_help >&2
+      exit 1
+      ;;
+  esac
+
+  shift
+done
+
+log_info "Setting up the .env..."
+if [ ! -f ".env" ]; then
+  cp ".env.sample" ".env"
+  log_success ".env file created, you might want to open .env and set the
+    correct values. Make sure you export them into your environment before
+    runing this script again. Read CONTRIBUTING.md for more information."
+  exit
+else
+  log_warn ".env file already exists, skipping..."
+fi
+
+log_info "Installing required languages..."
+if not_installed "asdf"; then
+  log_error "
+  We are using asdf (https://github.com/asdf-vm/asdf) to manage tool
+  dependencies, since it was not found on your system we cannot ensure that you
+  are using the correct versions of all the tools. Please install it and run
+  this script again, or proceed at your own peril.
+  "
+
+  ensure_confirmation
+else
+  set +e
+  asdf plugin add erlang 2>/dev/null
+  asdf plugin add elixir 2>/dev/null
+  asdf install
+  set -e
+fi
+
+load_env_file ".env"
+
+log_info "Installing dependencies..."
+mix local.hex --force
+mix local.rebar --force
+mix setup
+
+log_info "Creating, running migrations and populating database..."
+mix ecto.setup
+
+log_info "You're good to go! Run mix phx.server to get the development server running."

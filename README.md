@@ -1,18 +1,25 @@
+[contributing]: CONTRIBUTING.md
+[code_of_conduct]: CODE_OF_CONDUCT.md
+[license]: LICENSE
+
 # Katana
 
-To start your Phoenix server:
+> 🍙 Dashboard for CoderDojo Braga's website
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+## 🤝 Contributing
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+When contributing to this repository, please first discuss the change you wish
+to make via discussions, issues, email, or any other method with the owners of this
+repository before making a change.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+Note we have a [Code of Conduct][code_of_conduct], please follow it
+in all your interactions with the project.
 
-## Learn more
+We have a [Contributing Guide][contributing] to help you getting started.
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+## 📝 License
+
+Copyright (c) 2025, CoderDojo Braga.
+
+This project is licensed under the GPLv3 License - see the [LICENSE][license]
+file for details.
