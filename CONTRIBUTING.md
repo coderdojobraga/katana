@@ -84,6 +84,6 @@ uses.
 
 - [Getting Started with Elixir](https://elixir-lang.org/getting-started/introduction.html)
 - [Phoenix LiveView Documentation](https://hexdocs.pm/phoenix_live_view)
-- [Phoenix LiveVue Documentation](https://hexdocs.pm/phoenix_live_vue)
+- [LiveVue Documentation](https://hexdocs.pm/live_vue)
 - [Vue.js Documentation](https://vuejs.org/guide/introduction.html)
 - [Ecto Documentation](https://hexdocs.pm/ecto)
