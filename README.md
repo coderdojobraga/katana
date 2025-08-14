@@ -6,6 +6,10 @@
 
 > 🍙 Dashboard for CoderDojo Braga's website
 
+## 📖 Considerations
+
+This project is a work in progress that is being heavily inspired by our older project [bokken](https://coderdojobraga/bokken.git). It is being developed in Elixir and Phoenix LiveView, with the particularity of using Vue.js (via [LiveVue](https://hexdocs.pm/live_vue)) for the frontend.
+
 ## 🤝 Contributing
 
 When contributing to this repository, please first discuss the change you wish
