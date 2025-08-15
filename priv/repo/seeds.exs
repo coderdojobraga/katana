@@ -8,7 +8,8 @@ defmodule Atomic.Repo.Seeds do
 
   def run do
     [
-      "user.exs"
+      "user.exs",
+      "locations.exs"
     ]
     |> Enum.each(fn file ->
       Code.require_file("#{@seeds_dir}/#{file}")
