@@ -48,14 +48,16 @@ const submit = () => {
           required
         />
       </div>
-      <Button
-        :disabled="!form.email || isSubmitting"
-        type="submit"
-        class="w-full"
-      >
-        <span v-if="isSubmitting">Sending...</span>
-        <span v-else>Send reset link</span>
-      </Button>
+	<Button
+  	:disabled="!form.email || isSubmitting"
+  	type="submit"
+  	class="w-full"
+  	:aria-busy="isSubmitting"
+	>
+  	<span role="status" aria-live="polite">
+    	{{ isSubmitting ? "Sending..." : "Send reset link" }}
+  	</span>
+	</Button>
     </div>
     <div class="text-center text-sm">
       Remember your password?
