@@ -21,6 +21,20 @@ defmodule KatanaWeb.Router do
     live "/", HomeLive, :index
   end
 
+  ## Admin Panel
+
+  import Backpex.Router
+
+  scope "/admin", KatanaWeb do
+    pipe_through :browser
+
+    backpex_routes()
+
+    live_session :default, on_mount: Backpex.InitAssigns do
+      live_resources "/users", Live.UserLive
+    end
+  end
+
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:katana, :dev_routes) do
     # If you want to use the LiveDashboard in production, you should put

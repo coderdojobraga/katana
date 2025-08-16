@@ -1,7 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
-@plugin "@tailwindcss/forms";
 @plugin "./lucide.plugin.js";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -15,6 +14,8 @@
 @source "../../lib/katana_web/**/*.html.heex";
 @source "../vue/**/*.vue";
 @source "../../lib/**/*.vue";
+@source "../../deps/backpex/**/*.*ex";
+@source "../../deps/backpex/assets/js/**/*.*js";
 
 @theme inline {
   --color-background: var(--background);
