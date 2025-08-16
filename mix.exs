@@ -65,6 +65,9 @@ defmodule Katana.MixProject do
       {:swoosh, "~> 1.5"},
       {:finch, "~> 0.13"},
 
+      # admin panel
+      {:backpex, "~> 0.14.0"},
+
       # telemetry
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:telemetry_metrics, "~> 1.0"},
