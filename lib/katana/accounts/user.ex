@@ -8,7 +8,7 @@ defmodule Katana.Accounts.User do
 
   @registration_fields ~w(name email password)a
 
-  @derive {LiveVue.Encoder, except: [:hashed_password, :current_password, :confirmed_at]}
+  @derive {LiveVue.Encoder, except: [:hashed_password, :confirmed_at]}
   schema "users" do
     field :name, :string
     field :email, :string
