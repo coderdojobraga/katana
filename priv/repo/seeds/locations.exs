@@ -19,7 +19,7 @@ defmodule Katana.Repo.Seeds.Locations do
 
    defp seed_locations do
     locations = [
-      %{name: "CeSIUM-DI", link: "https://maps.app.goo.gl/T5CWCEZCnoZB6sPdA"},
+      %{name: "Departamento de Informática", link: "https://maps.app.goo.gl/T5CWCEZCnoZB6sPdA"},
       %{name: "gnration", link: "https://maps.app.goo.gl/2YKJbXPFvRzgnpSg9"}
     ]
 

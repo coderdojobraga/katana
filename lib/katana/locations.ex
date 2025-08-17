@@ -1,4 +1,3 @@
-
 defmodule Katana.Locations do
   @moduledoc """
   The Locations context.

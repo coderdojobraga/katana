@@ -1,4 +1,4 @@
-defmodule Atomic.Repo.Seeds do
+defmodule Katana.Repo.Seeds do
   @moduledoc """
   Script for populating the database.
   You can run it as:
@@ -8,8 +8,8 @@ defmodule Atomic.Repo.Seeds do
 
   def run do
     [
-      "user.exs",
-      "locations.exs"
+      "accounts.exs",
+      "locations.exs",
     ]
     |> Enum.each(fn file ->
       Code.require_file("#{@seeds_dir}/#{file}")
@@ -17,4 +17,4 @@ defmodule Atomic.Repo.Seeds do
   end
 end
 
-Atomic.Repo.Seeds.run()
+Katana.Repo.Seeds.run()
