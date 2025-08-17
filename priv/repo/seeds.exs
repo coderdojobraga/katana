@@ -1,4 +1,4 @@
-defmodule Atomic.Repo.Seeds do
+defmodule Katana.Repo.Seeds do
   @moduledoc """
   Script for populating the database.
   You can run it as:
