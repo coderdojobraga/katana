@@ -1,10 +1,11 @@
-defmodule KatanaWeb.Live.UserLive do
+defmodule KatanaWeb.UserLive do
   use Backpex.LiveResource,
     adapter_config: [
       schema: Katana.Accounts.User,
       repo: Katana.Repo,
       update_changeset: &Katana.Accounts.User.update_changeset/3,
-      create_changeset: &Katana.Accounts.User.registration_changeset/3    ],
+      create_changeset: &Katana.Accounts.User.registration_changeset/3
+    ],
     layout: {KatanaWeb.Layouts, :admin}
 
   @impl Backpex.LiveResource
@@ -16,14 +17,26 @@ defmodule KatanaWeb.Live.UserLive do
   @impl Backpex.LiveResource
   def fields do
     [
-      title: %{
+      name: %{
         module: Backpex.Fields.Text,
-        label: "Name"
+        label: "Name",
+        placeholder: "Enter full name"
       },
-      views: %{
+      email: %{
         module: Backpex.Fields.Text,
-        label: "Password"
-      }
+        label: "Email",
+        placeholder: "Enter email address"
+      },
+      password: %{
+        module: Backpex.Fields.Text,
+        label: "Password",
+        placeholder: "Enter password"
+      },
+      current_password: %{
+        module: Backpex.Fields.Text,
+        label: "Current Password",
+        placeholder: "Enter current password if updating"
+      },
     ]
   end
 end

@@ -31,7 +31,7 @@ defmodule KatanaWeb.Router do
     backpex_routes()
 
     live_session :default, on_mount: Backpex.InitAssigns do
-      live_resources "/users", Live.UserLive
+      live_resources "/users", UserLive
     end
   end
 
