@@ -32,11 +32,6 @@ defmodule KatanaWeb.UserLive do
         label: "Password",
         placeholder: "Enter password"
       },
-      current_password: %{
-        module: Backpex.Fields.Text,
-        label: "Current Password",
-        placeholder: "Enter current password if updating"
-      }
     ]
   end
 end
