@@ -4,6 +4,7 @@
 @plugin "./lucide.plugin.js";
 
 @custom-variant dark (&:where(.dark, .dark *));
+@plugin "daisyui";
 
 @custom-variant phx-click-loading ([".phx-click-loading&", ".phx-click-loading &"]);
 @custom-variant phx-submit-loading ([".phx-submit-loading&", ".phx-submit-loading &"]);
