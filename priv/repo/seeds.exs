@@ -16,4 +16,4 @@ defmodule Katana.Repo.Seeds do
   end
 end
 
-Atomic.Repo.Seeds.run()
+Katana.Repo.Seeds.run()
