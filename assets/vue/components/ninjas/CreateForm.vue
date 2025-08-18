@@ -89,7 +89,11 @@ function handleSubmit() {
 
     <!-- Has attended before -->
     <label class="flex items-center space-x-2 text-sm text-gray-700">
-      <Checkbox v-model:checked="ninja.has_attended_before" id="attended"  class="mr-4"/>
+      <Checkbox
+        v-model:checked="ninja.has_attended_before"
+        id="attended"
+        class="mr-4"
+      />
       O seu ninja já participou no CoderDojo?
     </label>
 
@@ -138,7 +142,11 @@ function handleSubmit() {
 
     <!-- Medical Condition -->
     <label class="flex items-center space-x-2 text-sm text-gray-700">
-      <Checkbox v-model:checked="ninja.has_medical_condition" id="medical"  class="mr-4"/>
+      <Checkbox
+        v-model:checked="ninja.has_medical_condition"
+        id="medical"
+        class="mr-4"
+      />
       O ninja tem alguma condição médica?
     </label>
 
@@ -164,13 +172,13 @@ function handleSubmit() {
 
     <!-- Image Consent -->
     <label class="flex items-center text-sm text-gray-700">
-      <Switch v-model:checked="ninja.image_consent" id="consent" class="mr-4"/>
+      <Switch v-model:checked="ninja.image_consent" id="consent" class="mr-4" />
       Consente a utilização ?
     </label>
 
     <!-- Submit -->
     <Button type="submit" class="w-full text-white font-semibold">
-      {{isSubmitting ? 'Criando...' : 'Criar Ninja'}}
+      {{ isSubmitting ? 'Criando...' : 'Criar Ninja' }}
     </Button>
   </form>
 </template>
