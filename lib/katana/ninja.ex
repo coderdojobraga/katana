@@ -23,7 +23,50 @@ defmodule Katana.Ninja do
   @doc false
   def changeset(ninja, attrs) do
     ninja
-    |> cast(attrs, [:full_name, :birth_date, :has_attended_before, :number_of_sessions, :coderdojo_experience_description, :programming_experience_description, :has_medical_condition, :medical_condition_details, :additional_info, :image_consent, :belt])
-    |> validate_required([:full_name, :birth_date, :has_attended_before, :number_of_sessions, :coderdojo_experience_description, :programming_experience_description, :has_medical_condition, :medical_condition_details, :additional_info, :image_consent, :belt])
+    |> cast(attrs, [
+      :full_name,
+      :birth_date,
+      :has_attended_before,
+      :number_of_sessions,
+      :coderdojo_experience_description,
+      :programming_experience_description,
+      :has_medical_condition,
+      :medical_condition_details,
+      :additional_info,
+      :image_consent,
+      :belt
+    ])
+    |> validate_required([
+      :full_name,
+      :birth_date,
+      :has_attended_before,
+      :number_of_sessions,
+      :coderdojo_experience_description,
+      :programming_experience_description,
+      :has_medical_condition,
+      :medical_condition_details,
+      :additional_info,
+      :image_consent,
+      :belt
+    ])
+    |> validate_required([
+      :full_name,
+      :birth_date,
+      :has_attended_before,
+      :number_of_sessions,
+      :coderdojo_experience_description,
+      :programming_experience_description,
+      :image_consent,
+      :belt
+    ])
+    |> validate_medical_condition()
+  end
+
+  defp validate_medical_condition(changeset) do
+    if get_field(changeset, :has_medical_condition) do
+      validate_required(changeset, [:medical_condition_details])
+    else
+      changeset
+    end
   end
 end
