@@ -25,7 +25,7 @@ defmodule KatanaWeb.Router do
     pipe_through :browser
 
     live "/", HomeLive, :index
-    live "/new", NinjasCreateLive, :index
+    live "/new", NinjasCreateLive, :create
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
