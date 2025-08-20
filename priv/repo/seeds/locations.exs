@@ -3,7 +3,7 @@ defmodule Katana.Repo.Seeds.Locations do
   MLocations seeding
   """
 
-  alias Katana.Location
+  alias Katana.Locations.Location
   alias Katana.Locations
   alias Katana.Repo
 

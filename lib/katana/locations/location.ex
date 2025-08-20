@@ -1,4 +1,4 @@
-defmodule Katana.Location do
+defmodule Katana.Locations.Location do
   use Ecto.Schema
   import Ecto.Changeset
 
