@@ -3,7 +3,7 @@ defmodule Katana.Repo.Seeds.Ninjas do
   Seeding de Ninjas
   """
 
-  alias Katana.Ninja
+  alias Katana.Ninjas.Ninja
   alias Katana.Ninjas
   alias Katana.Repo
 
@@ -13,7 +13,7 @@ defmodule Katana.Repo.Seeds.Ninjas do
         seed_ninjas()
 
       _ ->
-        Mix.shell().error("Encontrados Ninjas, abortando seeding ninjas.")
+        Mix.shell().error("Found ninjas, aborting seeding ninjas.")
     end
   end
 
