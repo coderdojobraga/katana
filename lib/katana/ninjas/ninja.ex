@@ -1,4 +1,4 @@
-defmodule Katana.Ninja do
+defmodule Katana.Ninjas.Ninja do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -24,19 +24,6 @@ defmodule Katana.Ninja do
   def changeset(ninja, attrs) do
     ninja
     |> cast(attrs, [
-      :full_name,
-      :birth_date,
-      :has_attended_before,
-      :number_of_sessions,
-      :coderdojo_experience_description,
-      :programming_experience_description,
-      :has_medical_condition,
-      :medical_condition_details,
-      :additional_info,
-      :image_consent,
-      :belt
-    ])
-    |> validate_required([
       :full_name,
       :birth_date,
       :has_attended_before,
