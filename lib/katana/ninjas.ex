@@ -5,7 +5,7 @@ defmodule Katana.Ninjas do
 
   import Ecto.Query, warn: false
   alias Katana.Repo
-  alias Katana.Ninja
+  alias Katana.Ninjas.Ninja
 
   @doc """
   Creates a ninja.

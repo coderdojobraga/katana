@@ -3,7 +3,7 @@ defmodule Katana.Repo.Seeds.Ninjas do
   Seeding de Ninjas
   """
 
-  alias Katana.Ninja
+  alias Katana.Ninjas.Ninja
   alias Katana.Ninjas
   alias Katana.Repo
 
