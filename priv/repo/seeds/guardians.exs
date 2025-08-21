@@ -19,7 +19,7 @@ defmodule Katana.Repo.Seeds.Guardians do
 
   defp seed_guardians do
     guardians =
-      for _ <- 1..50 do
+      for _ <- 1..80 do
         %{
           phone: PtPt.cell_number()
         }

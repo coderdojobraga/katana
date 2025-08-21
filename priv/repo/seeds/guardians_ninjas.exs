@@ -29,7 +29,7 @@ defmodule Katana.Repo.Seeds.GuardiansNinjas do
     shuffled_guardians = Enum.shuffle(guardians)
 
     Enum.each(ninjas, fn ninja ->
-      num_guardians = Enum.random(1..2)
+      num_guardians = if  Enum.random(1..5) !== 1, do: 1, else: 2
 
       available_guardians =
         shuffled_guardians
