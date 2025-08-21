@@ -72,6 +72,7 @@ defmodule Katana.MixProject do
 
       # test
       {:floki, ">= 0.30.0", only: :test},
+      {:faker, "~> 0.18", only: [:dev, :test]},
 
       # i18n
       {:gettext, "~> 0.26"},
