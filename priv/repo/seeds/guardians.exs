@@ -1,8 +1,6 @@
 defmodule Katana.Repo.Seeds.Guardians do
   @moduledoc """
   Seeding de Guardians (50 gerados com Faker.Phone.PtPt)
-
-  NOTE: THIS SEEDING SERVES ONLY AS A STRUCTURAL EXAMPLE
   """
   alias Katana.Guardians
   alias Katana.Guardians.Guardian
