@@ -1,6 +1,6 @@
 defmodule Katana.Repo.Seeds.Ninjas do
   @moduledoc """
-  Seeding de Ninjas 
+  Seeding of Ninjas
   """
 
   alias Faker.{Person.PtBr, Lorem}

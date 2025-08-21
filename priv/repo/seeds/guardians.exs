@@ -1,6 +1,6 @@
 defmodule Katana.Repo.Seeds.Guardians do
   @moduledoc """
-  Seeding de Guardians (50 gerados com Faker.Phone.PtPt)
+  Seeding of Guardians
   """
   alias Katana.Guardians
   alias Katana.Guardians.Guardian
