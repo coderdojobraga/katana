@@ -1,75 +1,90 @@
 defmodule Katana.Repo.Seeds.Ninjas do
   @moduledoc """
-  Seeding de Ninjas
+  Seeding de Ninjas 
   """
 
+  alias Faker.{Person.PtBr, Lorem}
   alias Katana.Ninjas.Ninja
   alias Katana.Ninjas
   alias Katana.Repo
 
+  @belts [
+    "branco", "amarelo", "azul", "verde",
+    "laranja", "vermelho", "roxo", "preto"
+  ]
+
   def run do
     case Repo.all(Ninja) do
-      [] ->
-        seed_ninjas()
-
-      _ ->
-        Mix.shell().error("Found ninjas, aborting seeding ninjas.")
+      [] -> seed_ninjas()
+      _ -> Mix.shell().error("Found ninjas, aborting seeding ninjas.")
     end
   end
 
   defp seed_ninjas do
-    ninjas = [
-      %{
-        full_name: "João Silva",
-        birth_date: ~D[2010-03-12],
-        has_attended_before: true,
-        number_of_sessions: 8,
-        coderdojo_experience_description: "Aprendeu conceitos básicos de Scratch e Python.",
-        programming_experience_description: "Alguma experiência com programação em blocos.",
-        has_medical_condition: false,
-        medical_condition_details: nil,
-        additional_info: "Adora comer filipinos.",
-        image_consent: true,
-        belt: "Amarelo"
-      },
-      %{
-        full_name: "Maria Fernandes",
-        birth_date: ~D[2009-07-21],
-        has_attended_before: false,
-        number_of_sessions: 0,
-        coderdojo_experience_description: "Primeira vez a participar no dojo.",
-        programming_experience_description: "Sem experiência prévia em programação.",
-        has_medical_condition: true,
-        medical_condition_details: "Alergia a frutos secos.",
-        additional_info: nil,
-        image_consent: true,
-        belt: "Branco"
-      },
-      %{
-        full_name: "Pedro Costa",
-        birth_date: ~D[2011-01-30],
-        has_attended_before: true,
-        number_of_sessions: 5,
-        coderdojo_experience_description: "Aprendeu Scratch e básicos de Python.",
-        programming_experience_description: "Experimentou Javascript em projetos escolares.",
-        has_medical_condition: false,
-        medical_condition_details: nil,
-        additional_info: "Gosta de criar jogos simples.",
-        image_consent: true,
-        belt: "Verde"
-      }
-    ]
+    ninjas =
+      for _ <- 1..100 do
+        {has_medical_condition, medical_condition_details} = medical_condition()
+
+        %{
+          full_name: build_name(),
+          birth_date: random_date(),
+          has_attended_before: random_bool(),
+          number_of_sessions: Enum.random(0..12),
+          coderdojo_experience_description: Lorem.sentence(),
+          programming_experience_description: Lorem.paragraph(),
+          has_medical_condition: has_medical_condition,
+          medical_condition_details: medical_condition_details,
+          additional_info: Lorem.sentence(),
+          image_consent: random_bool(),
+          belt: Enum.random(@belts)
+        }
+      end
 
     for attrs <- ninjas do
       case Ninjas.create_ninja(attrs) do
         {:ok, _ninja} ->
-          Mix.shell().info("Criado ninja: #{attrs.full_name}")
+          Mix.shell().info("Created ninja #{attrs.full_name}")
 
         {:error, changeset} ->
-          Mix.shell().error("Erro ao criar #{attrs.full_name}: #{inspect(changeset.errors)}")
+          Mix.shell().error("Failed to create ninja #{attrs.full_name}: #{inspect(changeset.errors)}")
       end
     end
   end
+
+  defp build_name do
+    firsts =
+      1..Enum.random(1..2)
+      |> Enum.map(fn _ -> PtBr.first_name() end)
+      |> Enum.join(" ")
+
+    lasts =
+      1..Enum.random(2..4)
+      |> Enum.map(fn _ -> PtBr.last_name() end)
+      |> Enum.join(" ")
+
+    "#{firsts} #{lasts}"
+  end
+
+  defp random_date do
+    year = Enum.random(2008..2015)
+    month = Enum.random(1..12)
+    day = Enum.random(1..28)
+    {response, date} = Date.new(year, month, day)
+    date
+  end
+
+  defp medical_condition do
+    if random_bool() do
+      {true, Lorem.sentence()}
+    else
+      {false, nil}
+    end
+  end
+
+    defp random_bool, do: Enum.random([true, false])
+
+
 end
+
 
 Katana.Repo.Seeds.Ninjas.run()
