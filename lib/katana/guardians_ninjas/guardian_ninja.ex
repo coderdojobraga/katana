@@ -5,8 +5,8 @@ defmodule Katana.GuardiansNinjas.GuardianNinja do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "guardian_ninja" do
-    field :ninja_id, Ecto.UUID
-    field :guardian_id, Ecto.UUID
+    field :ninja_id, :binary_id
+    field :guardian_id, :binary_id
 
     timestamps(type: :utc_datetime)
   end

@@ -58,7 +58,7 @@ defmodule Katana.Repo.Seeds.Ninjas do
       |> Enum.join(" ")
 
     lasts =
-      1..Enum.random(2..4)
+      1..Enum.random(2..3)
       |> Enum.map(fn _ -> PtBr.last_name() end)
       |> Enum.join(" ")
 

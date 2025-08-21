@@ -11,7 +11,7 @@ defmodule Katana.Repo.Migrations.CreateUsersAuthTables do
       add :email, :citext, null: false
 
       add :guardian_id, references(:guardians, type: :binary_id, on_delete: :delete_all),
-        null: true
+        null: false
 
       add :hashed_password, :string, null: false
 
