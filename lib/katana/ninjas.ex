@@ -8,7 +8,6 @@ defmodule Katana.Ninjas do
   alias Katana.Ninjas.Ninja
   alias Katana.GuardiansNinjas.GuardianNinja
 
-
   @doc """
   Creates a ninja.
   """

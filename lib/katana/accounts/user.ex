@@ -13,6 +13,8 @@ defmodule Katana.Accounts.User do
     field :name, :string
     field :email, :string
 
+    field :guardian_id, :binary_id, redact: true
+
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :current_password, :string, virtual: true, redact: true
