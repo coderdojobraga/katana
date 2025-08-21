@@ -5,8 +5,8 @@ defmodule Katana.Guardians do
 
   import Ecto.Query, warn: false
   alias Katana.Repo
-
   alias Katana.Guardians.Guardian
+  alias Katana.GuardiansNinjas.GuardianNinja
 
   @doc """
   Returns the list of guardians.
@@ -87,6 +87,20 @@ defmodule Katana.Guardians do
   """
   def delete_guardian(%Guardian{} = guardian) do
     Repo.delete(guardian)
+  end
+
+  @doc """
+  Returns all Guardians linked to a given Ninja id.
+  """
+  def get_guardians_for_ninja(ninja_id) do
+    query =
+      from gn in GuardianNinja,
+        where: gn.ninja_id == ^ninja_id,
+        join: g in Guardian,
+        on: g.id == gn.guardian_id,
+        select: g
+
+    Repo.all(query)
   end
 
   @doc """

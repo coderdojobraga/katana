@@ -6,6 +6,8 @@ defmodule Katana.Ninjas do
   import Ecto.Query, warn: false
   alias Katana.Repo
   alias Katana.Ninjas.Ninja
+  alias Katana.GuardiansNinjas.GuardianNinja
+
 
   @doc """
   Creates a ninja.
@@ -43,6 +45,17 @@ defmodule Katana.Ninjas do
   """
   def delete_ninja(%Ninja{} = ninja) do
     Repo.delete(ninja)
+  end
+
+  def get_ninjas_for_guardian(guardian_id) do
+    query =
+      from gn in GuardianNinja,
+        where: gn.guardian_id == ^guardian_id,
+        join: n in Ninja,
+        on: n.id == gn.ninja_id,
+        select: n
+
+    Repo.all(query)
   end
 
   @doc """
