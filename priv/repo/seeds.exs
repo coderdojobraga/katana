@@ -10,7 +10,8 @@ defmodule Katana.Repo.Seeds do
     [
       "accounts.exs",
       "ninjas.exs",
-      "guardians.exs"
+      "guardians.exs",
+      "guardians_ninjas.exs"
     ]
     |> Enum.each(fn file ->
       Code.require_file("#{@seeds_dir}/#{file}")
