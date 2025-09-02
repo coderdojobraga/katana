@@ -1,6 +1,4 @@
-// polyfill recommended by Vite https://vitejs.dev/config/build-options#build-modulepreload
-import "vite/modulepreload-polyfill";
-import { Component, h } from "vue";
+import { h, type Component } from "vue";
 import {
   createLiveVue,
   findComponent,

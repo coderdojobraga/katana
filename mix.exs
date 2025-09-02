@@ -12,7 +12,9 @@ defmodule Katana.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      compilers: [:phoenix_live_view] ++ Mix.compilers(),
+      listeners: [Phoenix.CodeReloader]
     ]
   end
 
@@ -36,9 +38,9 @@ defmodule Katana.MixProject do
   defp deps do
     [
       # core
-      {:live_vue, "~> 0.7.3"},
+      {:live_vue, github: "Valian/live_vue", branch: "igniter-installer-static"},
       {:bandit, "~> 1.5"},
-      {:phoenix, "~> 1.7.21"},
+      {:phoenix, "~> 1.8"},
       {:phoenix_live_view, "~> 1.0"},
       {:phoenix_html, "~> 4.1"},
       {:jason, "~> 1.2"},
@@ -94,16 +96,14 @@ defmodule Katana.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "format.all": ["format", "cmd --cd assets npm run format"],
-      "assets.setup": ["cmd --cd assets npm install"],
+      "format.all": ["format", "phoenix_vite.npm format"],
+      "assets.setup": ["phoenix_vite.npm assets install"],
       "assets.build": [
-        "cmd --cd assets npm run build",
-        "cmd --cd assets npm run build-server"
+        "phoenix_vite.npm vite build --manifest",
+        "phoenix_vite.npm vite build --ssr js/server.js --outDir ../priv/static --ssrManifest"
       ],
       "assets.deploy": [
-        "cmd --cd assets npm run build",
-        "cmd --cd assets npm run build-server",
-        "phx.digest"
+        "assets.build"
       ]
     ]
   end
