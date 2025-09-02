@@ -24,12 +24,13 @@ config :katana, KatanaWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "Yz7S7zILG5VpjihK8U0LZIcD0wqwDApDxbVm2/rRIevSMEnF/1HLOjeon/WjGMMh"
+  secret_key_base: "Yz7S7zILG5VpjihK8U0LZIcD0wqwDApDxbVm2/rRIevSMEnF/1HLOjeon/WjGMMh",
+  watchers: [vite: {PhoenixVite.Npm, :run, [:vite, ~w(dev)]}],
+  static_url: [host: "localhost", port: 5173]
 
 config :live_vue,
   vite_host: "http://localhost:5173",
-  ssr_module: LiveVue.SSR.ViteJS,
-  ssr: true
+  ssr_module: LiveVue.SSR.ViteJS
 
 # ## SSL Support
 #
@@ -58,13 +59,9 @@ config :live_vue,
 config :katana, KatanaWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/katana_web/(controllers|live|components)/.*(ex|heex)$"
     ]
-  ],
-  watchers: [
-    npm: ["--silent", "run", "dev", cd: Path.expand("../assets", __DIR__)]
   ]
 
 # Enable dev routes for dashboard and mailbox
