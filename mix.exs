@@ -100,7 +100,6 @@ defmodule Katana.MixProject do
       "assets.setup": ["phoenix_vite.npm assets install"],
       "assets.build": [
         "phoenix_vite.npm vite build --manifest",
-        "phoenix_vite.npm vite build --manifest",
         "phoenix_vite.npm vite build --ssr js/server.js --outDir ../priv/static --ssrManifest"
       ],
       "assets.deploy": [
