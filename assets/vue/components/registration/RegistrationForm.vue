@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { toRef } from "vue";
-import { Form, Link, useLiveForm } from "live_vue";
+import { type Form, Link, useLiveForm } from "live_vue";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -16,17 +15,14 @@ const props = defineProps<{
   form: Form<RegistrationFields>;
 }>();
 
-const { submit, form, fields, isSubmitting } = useLiveForm<RegistrationFields>(
-  toRef(props, "form"),
-  {
-    changeEvent: "validate",
-    submitEvent: "save",
-  },
-);
+const form = useLiveForm(() => props.form, {
+  changeEvent: "validate",
+  submitEvent: "save",
+});
 
-const name = fields["name"];
-const email = fields["email"];
-const password = fields["password"];
+const nameField = form.field("name");
+const emailField = form.field("email");
+const passwordField = form.field("password");
 </script>
 
 <template>
@@ -41,14 +37,15 @@ const password = fields["password"];
       <div class="grid gap-3">
         <Label for="name" mandatory>Name</Label>
         <Input
-          id="name"
           type="text"
           placeholder="John Doe"
-          v-model="name.value"
-          :name="name.name"
+          v-bind="nameField.inputAttrs.value"
           required
         />
-        <FieldError :show="name.touched" :message="name.errorMessage" />
+        <FieldError
+          :show="nameField.isTouched.value"
+          :message="nameField.errorMessage.value"
+        />
       </div>
       <div class="grid gap-3">
         <Label
@@ -58,35 +55,35 @@ const password = fields["password"];
           >Email</Label
         >
         <Input
-          id="email"
           type="email"
           placeholder="mail@coderdojobraga.org"
-          v-model="email.value"
-          :name="email.name"
+          v-bind="emailField.inputAttrs.value"
           required
         />
-        <FieldError :show="email.touched" :message="email.errorMessage" />
+        <FieldError
+          :show="emailField.isTouched.value"
+          :message="emailField.errorMessage.value"
+        />
       </div>
       <div class="grid gap-3">
         <Label for="password" mandatory>Password</Label>
         <Input
-          id="password"
           type="password"
-          v-model="password.value"
-          :name="password.name"
+          v-bind="passwordField.inputAttrs.value"
           required
         />
-        <FieldError :show="password.touched" :message="password.errorMessage" />
+        <FieldError
+          :show="passwordField.isTouched.value"
+          :message="passwordField.errorMessage.value"
+        />
       </div>
       <Button
-        :disabled="
-          (form.touched && !form.meta.valid) || isSubmitting || !form.meta.dirty
-        "
         type="button"
-        @click="submit"
+        :disabled="!form.isValid.value || form.isValidating.value"
+        @click="form.submit()"
         class="w-full"
       >
-        Finalize
+        {{ form.isValidating.value ? "Validating..." : "Register" }}
       </Button>
       <div
         class="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t"
