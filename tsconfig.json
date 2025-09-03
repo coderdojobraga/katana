@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": ".",
+    "lib": ["ES2015", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": ["./assets/vue/*"],
+      "*": ["../deps/*", "node_modules/*"]
+    },
+    "strict": true,
+    "types": ["vite/client"],
+  },
+  "include": [
+    "./assets/js/**/*",
+    "./assets/vue/**/*",
+    "./lib/katana_web/**/*"
+  ],
+  "exclude": ["node_modules"]
+}
