@@ -3,33 +3,15 @@ import { Ref, ref } from "vue";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link, useLiveVue } from "live_vue";
-
-const live = useLiveVue();
+import { Link } from "live_vue";
 
 const form: Ref<{ email: string }> = ref({
   email: "",
 });
-
-const isSubmitting = ref(false);
-
-const submit = () => {
-  isSubmitting.value = true;
-
-  live.pushEvent(
-    "send_email",
-    {
-      user: { email: form.value.email },
-    },
-    (_reply: any, _ref: Ref) => {
-      isSubmitting.value = false;
-    },
-  );
-};
 </script>
 
 <template>
-  <form @submit.prevent="submit" class="flex flex-col gap-6">
+  <form class="flex flex-col gap-6">
     <div class="flex flex-col items-center gap-2 text-center">
       <h1 class="text-2xl font-bold">Forgot your password?</h1>
       <p class="text-muted-foreground text-sm">
@@ -48,16 +30,14 @@ const submit = () => {
           required
         />
       </div>
-	<Button
-  	:disabled="!form.email || isSubmitting"
-  	type="submit"
-  	class="w-full"
-  	:aria-busy="isSubmitting"
-	>
-  	<span role="status" aria-live="polite">
-    	{{ isSubmitting ? "Sending..." : "Send reset link" }}
-  	</span>
-	</Button>
+      <Button
+        type="button"
+        @click="$live.pushEvent('send_email', { user: { email: form.email } })"
+        :disabled="!form.email"
+        class="w-full"
+      >
+        Send reset link
+      </Button>
     </div>
     <div class="text-center text-sm">
       Remember your password?

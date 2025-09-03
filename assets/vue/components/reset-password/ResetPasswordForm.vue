@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { toRef } from "vue";
-import { Form, Link, useLiveForm } from "live_vue";
+import { type Form, Link, useLiveForm } from "live_vue";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,16 +14,13 @@ const props = defineProps<{
   form: Form<ResetPasswordFields>;
 }>();
 
-const { submit, form, fields, isSubmitting } = useLiveForm<ResetPasswordFields>(
-  toRef(props, "form"),
-  {
-    changeEvent: "validate",
-    submitEvent: "reset_password",
-  },
-);
+const form = useLiveForm(() => props.form, {
+  changeEvent: "validate",
+  submitEvent: "reset_password",
+});
 
-const password = fields["password"];
-const passwordConfirmation = fields["password_confirmation"];
+const passwordField = form.field("password");
+const passwordConfirmationField = form.field("password_confirmation");
 </script>
 
 <template>
@@ -39,42 +35,41 @@ const passwordConfirmation = fields["password_confirmation"];
       <div class="grid gap-3">
         <Label for="password" mandatory>New password</Label>
         <Input
-          id="password"
           type="password"
           placeholder="Enter your new password"
-          v-model="password.value"
-          :name="password.name"
+          v-bind="passwordField.inputAttrs.value"
           required
         />
-        <FieldError :show="password.touched" :message="password.errorMessage" />
+        <FieldError
+          :show="passwordField.isTouched.value"
+          :message="passwordField.errorMessage.value"
+        />
       </div>
       <div class="grid gap-3">
         <Label for="password_confirmation" mandatory
           >Confirm new password</Label
         >
         <Input
-          id="password_confirmation"
           type="password"
           placeholder="Confirm your new password"
-          v-model="passwordConfirmation.value"
-          :name="passwordConfirmation.name"
+          v-bind="passwordConfirmationField.inputAttrs.value"
           required
         />
         <FieldError
-          :show="passwordConfirmation.touched"
-          :message="passwordConfirmation.errorMessage"
+          :show="passwordConfirmationField.isTouched.value"
+          :message="passwordConfirmationField.errorMessage.value"
         />
       </div>
       <Button
-        :disabled="
-          (form.touched && !form.meta.valid) || isSubmitting || !form.meta.dirty
-        "
         type="button"
-        @click="submit"
         class="w-full"
+        :disabled="form.isValidating.value"
+        :aria-busy="form.isValidating.value"
+        @click="form.submit()"
       >
-        <span v-if="isSubmitting">Resetting...</span>
-        <span v-else>Reset</span>
+        <span role="status" aria-live="polite">
+          {{ form.isValidating.value ? "Validating..." : "Reset" }}
+        </span>
       </Button>
     </div>
     <div class="text-center text-sm">

@@ -79,11 +79,14 @@ const passwordField = form.field("password");
       </div>
       <Button
         type="button"
-        :disabled="!form.isValid.value || form.isValidating.value"
-        @click="form.submit()"
         class="w-full"
+        :disabled="!form.isValid.value || form.isValidating.value"
+        :aria-busy="form.isValidating.value"
+        @click="form.submit()"
       >
-        {{ form.isValidating.value ? "Validating..." : "Register" }}
+        <span role="status" aria-live="polite">
+          {{ form.isValidating.value ? "Validating..." : "Register" }}
+        </span>
       </Button>
       <div
         class="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t"
