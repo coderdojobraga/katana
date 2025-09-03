@@ -2,7 +2,7 @@ defmodule Katana.Repo.Seeds.Accounts do
   @moduledoc """
   Minimal example of seeding.
 
-  NOTE: THIS SEEDING SERVES ONLY AS A EXAMPLE OF STRUCTURE
+  NOTE: THIS SEEDING SERVES ONLY AS AN EXAMPLE OF STRUCTURE
   """
   alias Katana.Accounts
   alias Katana.Accounts.User
