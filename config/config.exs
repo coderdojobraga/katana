@@ -22,6 +22,20 @@ config :katana, KatanaWeb.Endpoint,
   pubsub_server: Katana.PubSub,
   live_view: [signing_salt: "4uzLnzos"]
 
+config :live_vue,
+  shared_props: [],
+  ssr: true,
+  gettext_backend: KatanaWeb.Gettext
+
+config :phoenix_vite, PhoenixVite.Npm,
+  assets: [args: [], cd: __DIR__],
+  format: [args: ~w(exec -- prettier --write .), cd: Path.expand("../assets", __DIR__)],
+  vite: [
+    args: ~w(exec -- vite),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"MIX_BUILD_PATH" => Mix.Project.build_path()}
+  ]
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
