@@ -63,20 +63,20 @@ Create and start the database containers. You should use `linux.yml` if running 
 > If you are running WSL (Windows Subsystem for Linux), make sure to start the Docker engine first by opening the Docker Desktop app.
 
 ```
-cp .env .env.dev
-docker-compose -f docker-compose.dev.yml -f {linux,darwin}.yml up db
+cp .env.sample .env
+docker-compose -f docker-compose.yml -f {linux,darwin,wsl}.yml up db
 ```
 
 Start the previously created containers.
 
 ```
-docker-compose -f docker-compose.dev.yml -f {linux,darwin}.yml start
+docker-compose -f docker-compose.yml -f {linux,darwin,wsl}.yml start
 ```
 
 Stop the containers.
 
 ```
-docker-compose -f docker-compose.dev.yml -f {linux,darwin}.yml stop
+docker-compose -f docker-compose.yml -f {linux,darwin,wsl}.yml stop
 ```
 
 Destroy the containers and volumes created.
@@ -85,7 +85,7 @@ Destroy the containers and volumes created.
 > This is a destructive operation and will remove all data in the database.
 
 ```
-docker-compose -f docker-compose.dev.yml -f {linux,darwin}.yml down -v
+docker-compose -f docker-compose.yml -f {linux,darwin,wsl}.yml down -v
 ```
 
 ## 🔗 References
