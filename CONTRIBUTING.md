@@ -57,7 +57,10 @@ Please note that effort is being made to create a new extension for LiveVue. You
 If you want to setup the required database using docker containers you can
 easily do it with [docker-compose](https://docs.docker.com/compose/install/).
 
-Create and start the database containers. You should use `linux.yml` if running on Linux and `darwin.yml` if running on macOS.
+Create and start the database containers. You should use `linux.yml` if running on Linux, `darwin.yml` if running on macOS or `wsl.yml` if running on WSL.
+
+> [!NOTE]
+> If you are running WSL (Windows Subsystem for Linux), make sure to start the Docker engine first by opening the Docker Desktop app.
 
 ```
 cp .env .env.dev
