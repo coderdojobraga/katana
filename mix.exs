@@ -38,7 +38,7 @@ defmodule Katana.MixProject do
   defp deps do
     [
       # core
-      {:live_vue, github: "Valian/live_vue", branch: "igniter-installer-static"},
+      {:live_vue, "~> 1.0.0-rc"},
       {:bandit, "~> 1.5"},
       {:phoenix, "~> 1.8"},
       {:phoenix_live_view, "~> 1.0"},
