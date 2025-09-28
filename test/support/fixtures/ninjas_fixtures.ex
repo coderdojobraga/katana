@@ -11,17 +11,11 @@ defmodule Katana.NinjasFixtures do
     {:ok, ninja} =
       attrs
       |> Enum.into(%{
-        additional_info: "some additional_info",
-        belt: "some belt",
-        birth_date: ~D[2025-08-19],
-        coderdojo_experience_description: "some coderdojo_experience_description",
         full_name: "some full_name",
-        has_attended_before: true,
+        birth_date: ~D[2025-08-19],
         has_medical_condition: true,
-        image_consent: true,
         medical_condition_details: "some medical_condition_details",
-        number_of_sessions: 42,
-        programming_experience_description: "some programming_experience_description"
+        image_consent: true
       })
       |> Katana.Ninjas.create_ninja()
 
