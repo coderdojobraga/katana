@@ -8,7 +8,14 @@ defmodule Katana.NinjasTest do
 
     import Katana.NinjasFixtures
 
-    @invalid_attrs %{full_name: nil, birth_date: nil, has_medical_condition: nil, medical_condition_details: nil, image_consent: nil}
+    @invalid_attrs %{
+      full_name: nil,
+      birth_date: nil,
+      has_medical_condition: nil,
+      medical_condition_details: nil,
+      image_consent: nil,
+      belt: nil
+    }
 
     test "list_ninjas/0 returns all ninjas" do
       ninja = ninja_fixture()
@@ -26,7 +33,8 @@ defmodule Katana.NinjasTest do
         birth_date: ~D[2025-08-19],
         has_medical_condition: true,
         medical_condition_details: "some medical_condition_details",
-        image_consent: true
+        image_consent: true,
+        belt: "Yellow"
       }
 
       assert {:ok, %Ninja{} = ninja} = Ninjas.create_ninja(valid_attrs)
@@ -35,6 +43,7 @@ defmodule Katana.NinjasTest do
       assert ninja.has_medical_condition == true
       assert ninja.medical_condition_details == "some medical_condition_details"
       assert ninja.image_consent == true
+      assert ninja.belt == "Yellow"
     end
 
     test "create_ninja/1 with invalid data returns error changeset" do
@@ -49,7 +58,8 @@ defmodule Katana.NinjasTest do
         birth_date: ~D[2025-08-20],
         has_medical_condition: false,
         medical_condition_details: nil,
-        image_consent: false
+        image_consent: false,
+        belt: "Green"
       }
 
       assert {:ok, %Ninja{} = ninja} = Ninjas.update_ninja(ninja, update_attrs)
@@ -58,6 +68,7 @@ defmodule Katana.NinjasTest do
       assert ninja.has_medical_condition == false
       assert ninja.medical_condition_details == nil
       assert ninja.image_consent == false
+      assert ninja.belt == "Green"
     end
 
     test "update_ninja/2 with invalid data returns error changeset" do

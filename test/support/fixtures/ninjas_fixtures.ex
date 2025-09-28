@@ -15,7 +15,8 @@ defmodule Katana.NinjasFixtures do
         birth_date: ~D[2025-08-19],
         has_medical_condition: true,
         medical_condition_details: "some medical_condition_details",
-        image_consent: true
+        image_consent: true,
+        belt: "Yellow"
       })
       |> Katana.Ninjas.create_ninja()
 

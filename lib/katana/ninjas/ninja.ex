@@ -10,6 +10,7 @@ defmodule Katana.Ninjas.Ninja do
     field :has_medical_condition, :boolean, default: false
     field :medical_condition_details, :string
     field :image_consent, :boolean, default: false
+    field :belt, :string
 
     timestamps(type: :utc_datetime)
   end
@@ -22,12 +23,14 @@ defmodule Katana.Ninjas.Ninja do
       :birth_date,
       :has_medical_condition,
       :medical_condition_details,
-      :image_consent
+      :image_consent,
+      :belt
     ])
     |> validate_required([
       :full_name,
       :birth_date,
-      :image_consent
+      :image_consent,
+      :belt
     ])
     |> validate_medical_condition()
   end

@@ -24,21 +24,24 @@ defmodule Katana.Repo.Seeds.Ninjas do
         birth_date: ~D[2010-03-12],
         has_medical_condition: false,
         medical_condition_details: nil,
-        image_consent: true
+        image_consent: true,
+        belt: "Yellow"
       },
       %{
         full_name: "Maria Fernandes",
         birth_date: ~D[2009-07-21],
         has_medical_condition: true,
         medical_condition_details: "Allergy to nuts.",
-        image_consent: true
+        image_consent: true,
+        belt: "White"
       },
       %{
         full_name: "Pedro Costa",
         birth_date: ~D[2011-01-30],
         has_medical_condition: false,
         medical_condition_details: nil,
-        image_consent: true
+        image_consent: true,
+        belt: "Green"
       }
     ]
 
