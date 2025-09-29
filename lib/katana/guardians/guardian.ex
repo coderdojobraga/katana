@@ -7,13 +7,14 @@ defmodule Katana.Guardians.Guardian do
   schema "guardians" do
     field :phone, :string
 
+    belongs_to :user, Katana.Accounts.User, type: :binary_id
+
     timestamps(type: :utc_datetime)
   end
 
-  @doc false
   def changeset(guardian, attrs) do
     guardian
-    |> cast(attrs, [:phone])
-    |> validate_required([:phone])
+    |> cast(attrs, [:phone, :user_id])
+    |> validate_required([:phone, :user_id])
   end
 end

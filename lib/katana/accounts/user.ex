@@ -13,7 +13,7 @@ defmodule Katana.Accounts.User do
     field :name, :string
     field :email, :string
 
-    field :guardian_id, :binary_id
+    has_one :guardian, Katana.Guardians.Guardian, foreign_key: :user_id
 
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
