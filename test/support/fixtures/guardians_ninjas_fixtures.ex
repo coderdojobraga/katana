@@ -1,7 +1,7 @@
-defmodule Katana.GuardiansNinjasFixtures do
+defmodule Katana.GuardiansFixtures do
   @moduledoc """
   This module defines test helpers for creating
-  entities via the `Katana.GuardiansNinjas` context.
+  entities via the `Katana.Guardians` context.
   """
 
   @doc """
@@ -14,7 +14,7 @@ defmodule Katana.GuardiansNinjasFixtures do
         guardian_id: "7488a646-e31f-11e4-aace-600308960662",
         ninja_id: "7488a646-e31f-11e4-aace-600308960662"
       })
-      |> Katana.GuardiansNinjas.create_guardian_ninja()
+      |> Katana.Guardians.create_guardian_ninja()
 
     guardian_ninja
   end
