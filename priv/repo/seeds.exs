@@ -8,9 +8,8 @@ defmodule Katana.Repo.Seeds do
 
   def run do
     [
-      "ninjas.exs",
       "guardians.exs",
-      "guardians_ninjas.exs",
+      "ninjas.exs",
       "accounts.exs"
     ]
     |> Enum.each(fn file ->

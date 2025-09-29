@@ -1,11 +1,12 @@
 defmodule Katana.Repo.Seeds.Ninjas do
   @moduledoc """
-  Seeding of Ninjas
+  Seeding of Ninjas (each Ninja is automatically linked to a Guardian).
   """
 
   alias Faker.{Person.PtBr, Lorem}
   alias Katana.Ninjas.Ninja
   alias Katana.Ninjas
+  alias Katana.Guardians.Guardian
   alias Katana.Repo
 
   @belts ["white", "yellow", "blue", "green", "orange", "red", "purple", "black"]
@@ -18,27 +19,37 @@ defmodule Katana.Repo.Seeds.Ninjas do
   end
 
   defp seed_ninjas do
-    ninjas =
-      for _ <- 1..100 do
-        {has_medical_condition, medical_condition_details} = medical_condition()
+    guardians = Repo.all(Guardian)
 
-        %{
-          full_name: build_name(),
-          birth_date: random_date(),
-          has_medical_condition: has_medical_condition,
-          medical_condition_details: medical_condition_details,
-          image_consent: random_bool(),
-          belt: Enum.random(@belts)
-        }
-      end
+    if guardians == [] do
+      Mix.shell().error("No guardians found, aborting seeding ninjas.")
+      :error
+    else
+      ninjas =
+        for _ <- 1..100 do
+          {has_medical_condition, medical_condition_details} = medical_condition()
 
-    for attrs <- ninjas do
-      case Ninjas.create_ninja(attrs) do
-        {:ok, _ninja} ->
-          Mix.shell().info("Created ninja #{attrs.full_name}")
+          %{
+            full_name: build_name(),
+            birth_date: random_date(),
+            has_medical_condition: has_medical_condition,
+            medical_condition_details: medical_condition_details,
+            image_consent: random_bool(),
+            belt: Enum.random(@belts),
+            guardian_id: pick_guardian_id(guardians)
+          }
+        end
 
-        {:error, changeset} ->
-          Mix.shell().error("Failed to create ninja #{attrs.full_name}: #{inspect(changeset.errors)}")
+      for attrs <- ninjas do
+        case Ninjas.create_ninja(attrs) do
+          {:ok, _ninja} ->
+            Mix.shell().info("Created ninja #{attrs.full_name} with guardian_id=#{attrs.guardian_id}")
+
+          {:error, changeset} ->
+            Mix.shell().error(
+              "Failed to create ninja #{attrs.full_name}: #{inspect(changeset.errors)}"
+            )
+        end
       end
     end
   end
@@ -74,6 +85,12 @@ defmodule Katana.Repo.Seeds.Ninjas do
   end
 
   defp random_bool, do: Enum.random([true, false])
+
+  defp pick_guardian_id(guardians) do
+    guardians
+    |> Enum.random()
+    |> Map.get(:id)
+  end
 end
 
 Katana.Repo.Seeds.Ninjas.run()
