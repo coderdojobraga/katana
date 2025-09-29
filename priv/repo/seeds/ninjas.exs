@@ -8,10 +8,7 @@ defmodule Katana.Repo.Seeds.Ninjas do
   alias Katana.Ninjas
   alias Katana.Repo
 
-  @belts [
-    "branco", "amarelo", "azul", "verde",
-    "laranja", "vermelho", "roxo", "preto"
-  ]
+  @belts ["white", "yellow", "blue", "green", "orange", "red", "purple", "black"]
 
   def run do
     case Repo.all(Ninja) do
@@ -28,13 +25,8 @@ defmodule Katana.Repo.Seeds.Ninjas do
         %{
           full_name: build_name(),
           birth_date: random_date(),
-          has_attended_before: random_bool(),
-          number_of_sessions: Enum.random(0..12),
-          coderdojo_experience_description: Lorem.sentence(),
-          programming_experience_description: Lorem.paragraph(),
           has_medical_condition: has_medical_condition,
           medical_condition_details: medical_condition_details,
-          additional_info: Lorem.sentence(),
           image_consent: random_bool(),
           belt: Enum.random(@belts)
         }
@@ -69,7 +61,7 @@ defmodule Katana.Repo.Seeds.Ninjas do
     year = Enum.random(2008..2015)
     month = Enum.random(1..12)
     day = Enum.random(1..28)
-    {response, date} = Date.new(year, month, day)
+    {_, date} = Date.new(year, month, day)
     date
   end
 
@@ -81,10 +73,7 @@ defmodule Katana.Repo.Seeds.Ninjas do
     end
   end
 
-    defp random_bool, do: Enum.random([true, false])
-
-
+  defp random_bool, do: Enum.random([true, false])
 end
-
 
 Katana.Repo.Seeds.Ninjas.run()

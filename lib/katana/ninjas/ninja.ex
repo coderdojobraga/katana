@@ -7,13 +7,8 @@ defmodule Katana.Ninjas.Ninja do
   schema "ninjas" do
     field :full_name, :string
     field :birth_date, :date
-    field :has_attended_before, :boolean, default: false
-    field :number_of_sessions, :integer
-    field :coderdojo_experience_description, :string
-    field :programming_experience_description, :string
     field :has_medical_condition, :boolean, default: false
     field :medical_condition_details, :string
-    field :additional_info, :string
     field :image_consent, :boolean, default: false
     field :belt, :string
 
@@ -26,23 +21,14 @@ defmodule Katana.Ninjas.Ninja do
     |> cast(attrs, [
       :full_name,
       :birth_date,
-      :has_attended_before,
-      :number_of_sessions,
-      :coderdojo_experience_description,
-      :programming_experience_description,
       :has_medical_condition,
       :medical_condition_details,
-      :additional_info,
       :image_consent,
       :belt
     ])
     |> validate_required([
       :full_name,
       :birth_date,
-      :has_attended_before,
-      :number_of_sessions,
-      :coderdojo_experience_description,
-      :programming_experience_description,
       :image_consent,
       :belt
     ])
