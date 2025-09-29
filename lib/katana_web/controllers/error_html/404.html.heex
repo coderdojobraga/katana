@@ -16,7 +16,7 @@
   <body class="bg-white">
     <div class="min-h-screen flex flex-col items-center justify-center bg-white px-6 text-center">
       <div class="mb-6">
-            <img src={~p"/images/logo.svg"} class="w-[90px] h-[90px]" alt="CoderDojo Braga's Logo" />
+        <img src={~p"/images/logo.svg"} class="w-[90px] h-[90px]" alt="CoderDojo Braga's Logo" />
       </div>
 
       <h1 class="text-5xl font-bold tracking-tight text-slate-800">404</h1>
@@ -28,9 +28,13 @@
       </p>
 
       <div class="mt-8 flex flex-col sm:flex-row gap-4">
-        <a href="/" class="no-underline">
+        <a
+          href="#"
+          onclick="if (document.referrer !== '') { window.history.back(); } else { window.location.href = '/'; } return false;"
+          class="no-underline"
+        >
           <.vue v-component="Button">
-          Voltar à página inicial
+            Voltar à página anterior
           </.vue>
         </a>
       </div>
