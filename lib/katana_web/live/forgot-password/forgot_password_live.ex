@@ -1,11 +1,11 @@
-defmodule KatanaWeb.UserForgotPasswordLive do
+defmodule KatanaWeb.ForgotPasswordLive do
   use KatanaWeb, {:live_view, :root}
 
   alias Katana.Accounts
 
   def render(assigns) do
     ~H"""
-    <.vue v-component="UserForgotPassword" v-socket={@socket} />
+    <.vue v-component="ForgotPassword" v-socket={@socket} />
     """
   end
 
@@ -15,9 +15,9 @@ defmodule KatanaWeb.UserForgotPasswordLive do
 
   def handle_event("send_email", %{"user" => %{"email" => email}}, socket) do
     if user = Accounts.get_user_by_email(email) do
-      Accounts.deliver_user_reset_password_instructions(
+      Accounts.deliver_reset_password_instructions(
         user,
-        &url(~p"/users/reset_password/#{&1}")
+        &url(~p"/reset_password/#{&1}")
       )
     end
 

@@ -415,7 +415,7 @@ defmodule Katana.AccountsTest do
     end
   end
 
-  describe "deliver_user_reset_password_instructions/2" do
+  describe "deliver_reset_password_instructions/2" do
     setup do
       %{user: user_fixture()}
     end
@@ -423,7 +423,7 @@ defmodule Katana.AccountsTest do
     test "sends token through notification", %{user: user} do
       token =
         extract_user_token(fn url ->
-          Accounts.deliver_user_reset_password_instructions(user, url)
+          Accounts.deliver_reset_password_instructions(user, url)
         end)
 
       {:ok, token} = Base.url_decode64(token, padding: false)

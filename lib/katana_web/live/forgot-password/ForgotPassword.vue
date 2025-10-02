@@ -1,11 +1,7 @@
 <script setup lang="ts">
 import { GalleryVerticalEnd } from "lucide-vue-next";
 import { Link } from "live_vue";
-import ResetPasswordForm from "@/components/reset-password/ResetPasswordForm.vue";
-
-const props = defineProps<{
-  form: any;
-}>();
+import ForgotPasswordForm from "./components/ForgotPasswordForm.vue";
 </script>
 
 <template>
@@ -21,7 +17,7 @@ const props = defineProps<{
           Katana
         </Link>
       </div>
-      <ResetPasswordForm :form="props.form" />
+      <ForgotPasswordForm />
     </div>
   </div>
 </template>

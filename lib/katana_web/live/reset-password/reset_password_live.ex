@@ -1,11 +1,11 @@
-defmodule KatanaWeb.UserResetPasswordLive do
+defmodule KatanaWeb.ResetPasswordLive do
   use KatanaWeb, {:live_view, :root}
 
   alias Katana.Accounts
 
   def render(assigns) do
     ~H"""
-    <.vue v-component="UserResetPassword" form={@form} v-socket={@socket} />
+    <.vue v-component="ResetPassword" form={@form} v-socket={@socket} />
     """
   end
 

@@ -13,10 +13,10 @@ const form: Ref<{ email: string }> = ref({
 <template>
   <form class="flex flex-col gap-6">
     <div class="flex flex-col items-center gap-2 text-center">
-      <h1 class="text-2xl font-bold">Forgot your password?</h1>
+      <h1 class="text-2xl font-bold">Esqueceu-se da sua palavra-passe?</h1>
       <p class="text-muted-foreground text-sm">
-        Enter the email address associated with your account and we'll send you
-        a link to reset your password
+        Introduza o endereço de email associado à sua conta e enviaremos um
+        link para redefinir a sua palavra-passe
       </p>
     </div>
     <div class="grid gap-6">
@@ -36,13 +36,13 @@ const form: Ref<{ email: string }> = ref({
         :disabled="!form.email"
         class="w-full"
       >
-        Send reset link
+        Enviar link de redefinição
       </Button>
     </div>
     <div class="text-center text-sm">
-      Remember your password?
+      Lembra-se da sua palavra-passe?
       <Link navigate="/users/log_in" class="underline underline-offset-4">
-        Log in
+        Iniciar sessão
       </Link>
     </div>
   </form>

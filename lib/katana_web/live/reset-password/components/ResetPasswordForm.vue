@@ -5,11 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FieldError } from "@/components/ui/field-error";
 
-type ResetPasswordFields = {
-  password: string;
-  password_confirmation: string;
-};
-
 const props = defineProps<{
   form: Form<ResetPasswordFields>;
 }>();
@@ -26,17 +21,17 @@ const passwordConfirmationField = form.field("password_confirmation");
 <template>
   <form class="flex flex-col gap-6">
     <div class="flex flex-col items-center gap-2 text-center">
-      <h1 class="text-2xl font-bold">Reset your password</h1>
+      <h1 class="text-2xl font-bold">Redefinir a sua palavra-passe</h1>
       <p class="text-muted-foreground text-sm">
-        Create a new password for your account
+        Crie uma nova palavra-passe para a sua conta
       </p>
     </div>
     <div class="grid gap-6">
       <div class="grid gap-3">
-        <Label for="password" mandatory>New password</Label>
+        <Label for="password" mandatory>Nova palavra-passe</Label>
         <Input
           type="password"
-          placeholder="Enter your new password"
+          placeholder="Introduza a sua nova palavra-passe"
           v-bind="passwordField.inputAttrs.value"
           required
         />
@@ -47,11 +42,11 @@ const passwordConfirmationField = form.field("password_confirmation");
       </div>
       <div class="grid gap-3">
         <Label for="password_confirmation" mandatory
-          >Confirm new password</Label
+          >Confirmar nova palavra-passe</Label
         >
         <Input
           type="password"
-          placeholder="Confirm your new password"
+          placeholder="Confirme a sua nova palavra-passe"
           v-bind="passwordConfirmationField.inputAttrs.value"
           required
         />
@@ -68,14 +63,14 @@ const passwordConfirmationField = form.field("password_confirmation");
         @click="form.submit()"
       >
         <span role="status" aria-live="polite">
-          {{ form.isValidating.value ? "Validating..." : "Reset" }}
+          {{ form.isValidating.value ? "A validar..." : "Redefinir" }}
         </span>
       </Button>
     </div>
     <div class="text-center text-sm">
-      Remember your password?
+      Lembra-se da sua palavra-passe?
       <Link navigate="/users/log_in" class="underline underline-offset-4">
-        Log in
+        Iniciar sessão
       </Link>
     </div>
   </form>

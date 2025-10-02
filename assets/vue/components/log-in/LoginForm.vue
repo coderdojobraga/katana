@@ -52,7 +52,7 @@ const submit = () => {
         <div class="flex items-center">
           <Label for="password">Password</Label>
           <Link
-            navigate="/users/forgot_password"
+            navigate="/forgot_password"
             class="ml-auto text-sm underline-offset-4 hover:underline"
           >
             Forgot your password?
