@@ -4,15 +4,14 @@ defmodule Katana.LocationsFixtures do
   entities via the `Katana.Locations` context.
   """
 
-  @doc """
-  Generate a location.
-  """
   def location_fixture(attrs \\ %{}) do
+    unique_id = System.unique_integer([:positive])
+
     {:ok, location} =
       attrs
       |> Enum.into(%{
-        link: "some link",
-        name: "some name"
+        name: "Location #{unique_id}",
+        link: "https://example-#{unique_id}.com"
       })
       |> Katana.Locations.create_location()
 
