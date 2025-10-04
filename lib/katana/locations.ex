@@ -17,11 +17,11 @@ defmodule Katana.Locations do
       [%Location{}, ...]
 
   """
-def list_locations(opts \\ []) do
-  Location
-  |> order_by([l], asc: l.name)
-  |> Repo.all()
-end
+  def list_locations(opts \\ []) do
+    Location
+    |> order_by([l], asc: l.name)
+    |> Repo.all()
+  end
 
   @doc """
   Gets a single location.
