@@ -32,6 +32,7 @@ defmodule Katana.Ninjas do
 
   def create_ninja(_attrs) do
     {:error, "guardian_id is required when creating a ninja"}
+
   end
 
   @doc """

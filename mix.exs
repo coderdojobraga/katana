@@ -38,7 +38,7 @@ defmodule Katana.MixProject do
   defp deps do
     [
       # core
-      {:live_vue, github: "Valian/live_vue", branch: "igniter-installer-static"},
+      {:live_vue, "~> 1.0.0-rc"},
       {:bandit, "~> 1.5"},
       {:phoenix, "~> 1.8"},
       {:phoenix_live_view, "~> 1.0"},
@@ -93,7 +93,7 @@ defmodule Katana.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"],
+      setup: ["deps.get", "assets.setup", "assets.build"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
