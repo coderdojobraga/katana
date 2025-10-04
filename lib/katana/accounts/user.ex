@@ -6,7 +6,7 @@ defmodule Katana.Accounts.User do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 
-  @registration_fields ~w(name email guardian_id password)a
+  @registration_fields ~w(name email password)a
 
   @derive {LiveVue.Encoder, except: [:hashed_password, :current_password, :confirmed_at]}
   schema "users" do
