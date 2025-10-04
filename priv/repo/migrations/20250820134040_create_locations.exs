@@ -4,8 +4,8 @@ defmodule Katana.Repo.Migrations.CreateLocations do
   def change do
     create table(:locations, primary_key: false) do
       add :id, :binary_id, primary_key: true
-      add :name, :string
-      add :link, :string
+      add :name, :string, null: false
+      add :link, :string, null: false
 
       timestamps(type: :utc_datetime)
     end
