@@ -117,7 +117,8 @@ defmodule Katana.Guardians do
     query =
       from gn in GuardianNinja,
         where: gn.ninja_id == ^ninja_id,
-        join: g in Guardian, on: g.id == gn.guardian_id,
+        join: g in Guardian,
+        on: g.id == gn.guardian_id,
         select: g
 
     Repo.all(query)
@@ -130,7 +131,8 @@ defmodule Katana.Guardians do
     query =
       from gn in GuardianNinja,
         where: gn.guardian_id == ^guardian_id,
-        join: n in Ninja, on: n.id == gn.ninja_id,
+        join: n in Ninja,
+        on: n.id == gn.ninja_id,
         select: n
 
     Repo.all(query)
