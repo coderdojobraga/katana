@@ -1,6 +1,6 @@
 defmodule Katana.Repo.Seeds.Locations do
   @moduledoc """
-  MLocations seeding
+  Locations seeding
   """
 
   alias Katana.Locations.Location
