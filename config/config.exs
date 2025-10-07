@@ -22,6 +22,9 @@ config :katana, KatanaWeb.Endpoint,
   pubsub_server: Katana.PubSub,
   live_view: [signing_salt: "4uzLnzos"]
 
+config :gettext, default_locale: "pt"
+config :katana, KatanaWeb.Gettext, locales: ~w(pt en)
+
 config :live_vue,
   shared_props: [],
   ssr: true,

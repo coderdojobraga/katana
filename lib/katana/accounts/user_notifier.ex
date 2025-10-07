@@ -8,7 +8,7 @@ defmodule Katana.Accounts.UserNotifier do
     email =
       new()
       |> to(recipient)
-      |> from({"Katana", "contact@example.com"})
+      |> from({"Katana", "katana@coderdojobraga.org"})
       |> subject(subject)
       |> text_body(body)
 
