@@ -16,7 +16,7 @@ defmodule Katana.NinjasFixtures do
         has_medical_condition: true,
         medical_condition_details: "some medical_condition_details",
         image_consent: true,
-        belt: "Yellow"
+        belt: "yellow"
       })
       |> Katana.Ninjas.create_ninja()
 
