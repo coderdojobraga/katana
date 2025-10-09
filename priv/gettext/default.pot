@@ -1,0 +1,52 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new messages manually only if they're dynamic
+## messages that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here has no
+## effect: edit them in PO (.po) files instead.
+#
+msgid ""
+msgstr ""
+
+#: lib/katana_web/components/core/flash_group.ex:31
+#, elixir-autogen, elixir-format
+msgid "Attempting to reconnect"
+msgstr ""
+
+#: lib/katana_web/components/core/flash_group.ex:22
+#, elixir-autogen, elixir-format
+msgid "Error!"
+msgstr ""
+
+#: lib/katana_web/components/core/flash_group.ex:43
+#, elixir-autogen, elixir-format
+msgid "Hang in there while we get back on track"
+msgstr ""
+
+#: lib/katana_web/components/core/flash_group.ex:38
+#, elixir-autogen, elixir-format
+msgid "Something went wrong!"
+msgstr ""
+
+#: lib/katana_web/components/core/flash_group.ex:21
+#, elixir-autogen, elixir-format
+msgid "Success!"
+msgstr ""
+
+#: lib/katana_web/components/core/flash_group.ex:26
+#, elixir-autogen, elixir-format
+msgid "We can't find the internet"
+msgstr ""
+
+#: lib/katana_web/components/core/flash.ex:45
+#, elixir-autogen, elixir-format
+msgid "close"
+msgstr ""
+
+#: lib/katana/accounts/user.ex:59
+#, elixir-autogen, elixir-format
+msgid "must have the @ sign and no spaces"
+msgstr ""

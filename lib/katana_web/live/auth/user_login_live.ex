@@ -21,13 +21,13 @@ defmodule KatanaWeb.UserLoginLive do
     if user = Accounts.get_user_by_email_and_password(email, password) do
       {:noreply,
        socket
-       |> put_flash(:info, "Welcome back!")
+       |> put_flash(:info, "Bem-vindo de volta!")
        |> UserAuth.log_in_user(user, params)}
     else
       # In order to prevent user enumeration attacks, don't disclose whether the email is registered.
       {:noreply,
        socket
-       |> put_flash(:error, "Invalid email or password. Please try again shortly.")
+       |> put_flash(:error, "Credenciais inválidas. Por favor, tente novamente.")
        |> reload()}
     end
   end

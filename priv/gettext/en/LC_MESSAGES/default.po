@@ -1,0 +1,52 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: lib/katana_web/components/core/flash_group.ex:31
+#, elixir-autogen, elixir-format
+msgid "Attempting to reconnect"
+msgstr ""
+
+#: lib/katana_web/components/core/flash_group.ex:22
+#, elixir-autogen, elixir-format
+msgid "Error!"
+msgstr ""
+
+#: lib/katana_web/components/core/flash_group.ex:43
+#, elixir-autogen, elixir-format
+msgid "Hang in there while we get back on track"
+msgstr ""
+
+#: lib/katana_web/components/core/flash_group.ex:38
+#, elixir-autogen, elixir-format
+msgid "Something went wrong!"
+msgstr ""
+
+#: lib/katana_web/components/core/flash_group.ex:21
+#, elixir-autogen, elixir-format
+msgid "Success!"
+msgstr ""
+
+#: lib/katana_web/components/core/flash_group.ex:26
+#, elixir-autogen, elixir-format
+msgid "We can't find the internet"
+msgstr ""
+
+#: lib/katana_web/components/core/flash.ex:45
+#, elixir-autogen, elixir-format
+msgid "close"
+msgstr ""
+
+#: lib/katana/accounts/user.ex:59
+#, elixir-autogen, elixir-format
+msgid "must have the @ sign and no spaces"
+msgstr ""

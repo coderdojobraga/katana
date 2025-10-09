@@ -36,7 +36,7 @@ defmodule KatanaWeb.UserRegistrationLive do
          socket
          |> put_flash(
            :info,
-           "An email was sent to #{user.email}, please access it to confirm your account."
+           "Um email foi enviado para #{user.email}, por favor aceda a ele para confirmar a sua conta."
          )
          |> push_navigate(to: ~p"/users/log_in")}
 
@@ -45,7 +45,7 @@ defmodule KatanaWeb.UserRegistrationLive do
          socket
          |> put_flash(
            :error,
-           "Registration failed. Please try again and if the problem persists, contact support."
+           "Registo falhou. Por favor tente novamente e se o problema persistir, contacte o suporte."
          )
          |> reload(changeset)}
     end
