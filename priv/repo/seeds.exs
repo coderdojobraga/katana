@@ -8,6 +8,7 @@ defmodule Katana.Repo.Seeds do
 
   def run do
     [
+      "locations.exs",
       "guardians.exs",
       "ninjas.exs",
       "accounts.exs"
