@@ -135,6 +135,8 @@ defmodule KatanaWeb do
         Icon
       }
 
+      import KatanaWeb.Helpers.UrlHelpers
+
       alias Phoenix.LiveView.JS
 
       # Routes generation with the ~p sigil

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title default="Page Not Found" prefix="Katana · ">
+      {assigns[:page_title]}
+    </.live_title>
+    <LiveVue.Reload.vite_assets assets={["/js/app.js", "/css/app.css"]}>
+      <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+      <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
+      </script>
+    </LiveVue.Reload.vite_assets>
+  </head>
+  <body class="bg-white">
+    <div class="min-h-screen flex flex-col items-center justify-center bg-white px-6 text-center">
+      <div class="mb-6">
+        <img src={~p"/images/logo.svg"} class="w-[90px] h-[90px]" alt="CoderDojo Braga's Logo" />
+      </div>
+
+      <h1 class="text-5xl font-bold tracking-tight text-slate-800">404</h1>
+      <p class="mt-3 text-lg text-slate-600">
+        Oops! A página que procuras não existe.
+      </p>
+      <p class="mt-1 text-sm text-slate-500">
+        O link pode estar desatualizado ou a página foi movida.
+      </p>
+
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <a
+          href="#"
+          onclick="if (document.referrer !== '') { window.history.back(); } else { window.location.href = '/'; } return false;"
+          class="no-underline"
+        >
+          <.vue v-component="Button">
+            Voltar à página anterior
+          </.vue>
+        </a>
+      </div>
+
+      <div class="mt-6 text-xs text-slate-400">
+        <span>URL:</span>
+        <code class="block break-all mt-1 bg-slate-100 px-2 py-1 rounded">
+          {full_url(@conn)}
+        </code>
+      </div>
+
+      <footer class="mt-10 text-xs text-slate-400">
+        © {Date.utc_today().year} - CoderDojo Braga
+      </footer>
+    </div>
+  </body>
+</html>

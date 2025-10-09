@@ -23,7 +23,7 @@ config :katana, KatanaWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4000],
   check_origin: false,
   code_reloader: true,
-  debug_errors: true,
+  debug_errors: false,
   secret_key_base: "Yz7S7zILG5VpjihK8U0LZIcD0wqwDApDxbVm2/rRIevSMEnF/1HLOjeon/WjGMMh",
   watchers: [vite: {PhoenixVite.Npm, :run, [:vite, ~w(dev)]}],
   static_url: [host: "localhost", port: 5173]
